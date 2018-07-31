@@ -1,4 +1,4 @@
-# Simple-Tooltip
+# Vue-Simple-Tooltip
 
 > Vue.js simplified tooltip directive popover
 
@@ -29,7 +29,7 @@ If you need to insert more complex strings or elements, you can pass html purpos
 </template>
 
 <script>
-  import tooltip from 'simple-tooltip'
+  import tooltip from 'vue-simple-tooltip'
   export default {
     name: 'app',
     directives: {tooltip}
