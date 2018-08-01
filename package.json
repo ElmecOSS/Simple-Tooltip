@@ -5,6 +5,7 @@
   "author": "Samuele Caprioli <samuele.caprioli@elmec.it>",
   "license": "GNU GPL v3.0",
   "private": false,
+  "repository": "github:ElmecOSS/vue-simple-tooltip",
   "main": "dist/simple-tooltip.common.js",
   "files": [
     "dist/*",
