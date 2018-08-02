@@ -185,33 +185,33 @@ function createTooltip(el, binding) {
     switch (binding.arg) {
       case 'bottom':
         tooltipBox.style.left = el.getBoundingClientRect().left - tooltipBox.getBoundingClientRect().width / 2 + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipBox.style.top = el.getBoundingClientRect().y + el.getBoundingClientRect().height + tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
+        tooltipBox.style.top = el.getBoundingClientRect().top + el.getBoundingClientRect().height + tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
         tooltipArrow.style.left = el.getBoundingClientRect().left + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipArrow.style.top = el.getBoundingClientRect().y + el.getBoundingClientRect().height - tooltipArrow.getBoundingClientRect().height / 2  + scrollTop + 'px'
+        tooltipArrow.style.top = el.getBoundingClientRect().top + el.getBoundingClientRect().height - tooltipArrow.getBoundingClientRect().height / 2  + scrollTop + 'px'
         tooltipArrow.style.borderColor = 'transparent transparent black transparent'
         tooltipArrow.style.marginLeft = '-5px'
         break
       case 'right':
         tooltipBox.style.left = el.getBoundingClientRect().left + el.getBoundingClientRect().width + tooltipArrow.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipBox.style.top = el.getBoundingClientRect().y - tooltipBox.getBoundingClientRect().height / 2 + el.getBoundingClientRect().height / 2   + scrollTop + 'px'
+        tooltipBox.style.top = el.getBoundingClientRect().top - tooltipBox.getBoundingClientRect().height / 2 + el.getBoundingClientRect().height / 2   + scrollTop + 'px'
         tooltipArrow.style.left = el.getBoundingClientRect().left + el.getBoundingClientRect().width - tooltipArrow.getBoundingClientRect().width /2 + scrollLeft + 'px'
-        tooltipArrow.style.top = el.getBoundingClientRect().y + el.getBoundingClientRect().height / 2 + scrollTop + 'px'
+        tooltipArrow.style.top = el.getBoundingClientRect().top + el.getBoundingClientRect().height / 2 + scrollTop + 'px'
         tooltipArrow.style.borderColor = 'transparent black transparent transparent'
         tooltipArrow.style.marginTop = '-5px'
         break
       case 'left':
         tooltipBox.style.left = el.getBoundingClientRect().left - tooltipBox.getBoundingClientRect().width - tooltipArrow.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipBox.style.top = el.getBoundingClientRect().y - tooltipBox.getBoundingClientRect().height / 2 + el.getBoundingClientRect().height / 2   + scrollTop + 'px'
+        tooltipBox.style.top = el.getBoundingClientRect().top - tooltipBox.getBoundingClientRect().height / 2 + el.getBoundingClientRect().height / 2   + scrollTop + 'px'
         tooltipArrow.style.left = el.getBoundingClientRect().left - tooltipArrow.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipArrow.style.top = el.getBoundingClientRect().y + el.getBoundingClientRect().height / 2 + scrollTop + 'px'
+        tooltipArrow.style.top = el.getBoundingClientRect().top + el.getBoundingClientRect().height / 2 + scrollTop + 'px'
         tooltipArrow.style.borderColor = 'transparent transparent transparent black'
         tooltipArrow.style.marginTop = '-5px'
         break
       default:
         tooltipBox.style.left = el.getBoundingClientRect().left - tooltipBox.getBoundingClientRect().width / 2 + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipBox.style.top = el.getBoundingClientRect().y - tooltipBox.getBoundingClientRect().height - tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
+        tooltipBox.style.top = el.getBoundingClientRect().top - tooltipBox.getBoundingClientRect().height - tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
         tooltipArrow.style.left = el.getBoundingClientRect().left + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
-        tooltipArrow.style.top = el.getBoundingClientRect().y - tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
+        tooltipArrow.style.top = el.getBoundingClientRect().top - tooltipArrow.getBoundingClientRect().height / 2 + scrollTop + 'px'
         tooltipArrow.style.borderColor = 'black transparent transparent transparent'
         tooltipArrow.style.marginLeft = '-5px'
         break
