@@ -16,7 +16,6 @@ function createTooltip(el, binding) {
   let tooltipArrow = document.createElement('div')
   let tooltipText = document.createElement('div')
   tooltipText.innerHTML = binding.value
-  console.log(binding.value)
   switch (binding.arg) {
     case 'bottom':
       tooltipBox.style.top = '100%'
@@ -56,18 +55,19 @@ function createTooltip(el, binding) {
       break
   }
   tooltipBox.style.position = 'absolute'
-  tooltipBox.style.minWidth = '100px'
-  tooltipBox.style.zIndex = '2'
+  tooltipBox.style.zIndex = '90'
   tooltipBox.style.backgroundColor = 'black'
   tooltipBox.style.color = '#fff'
   tooltipBox.style.textAlign = 'center'
-  tooltipBox.style.padding = '5px'
+  tooltipBox.style.padding = '5px 20px 5px 20px'
   tooltipBox.style.borderRadius = '6px'
   tooltipBox.style.visibility = 'hidden'
 
+  tooltipText.style.fontSize = '12px'
+
   tooltipArrow.style.content = ''
   tooltipArrow.style.position = 'absolute'
-  tooltipArrow.style.zIndex = '2'
+  tooltipArrow.style.zIndex = '90'
   tooltipArrow.style.borderWidth = '5px'
   tooltipArrow.style.borderStyle = 'solid'
   tooltipArrow.style.visibility = 'hidden'
