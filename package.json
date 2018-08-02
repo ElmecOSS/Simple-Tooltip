@@ -20,7 +20,6 @@
     "build-bundle": "vue-cli-service build --target lib --name simple-tooltip ./src/index.js"
   },
   "dependencies": {
-    "@vue/cli-service-global": "^3.0.0-rc.10",
     "vue": "^2.5.11"
   },
   "browserslist": [
@@ -29,6 +28,7 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@vue/cli-service-global": "^3.0.0-rc.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

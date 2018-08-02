@@ -10,15 +10,20 @@ Basically usage, the tooltip will be positioned on top
 ```
 
 But you can also pass the position parameter [top, bottom, left, right]:
- ```html
- <span v-tooltip:bottom="'This tooltip will appear at bottom'">Hover me</span>
- ```
+```html
+<span v-tooltip:bottom="'This tooltip will appear at bottom'">Hover me</span>
+```
+ 
+For passing variable, put it only in double quotes:
+```html
+<span v-tooltip:bottom="myVariable">Hover me</span>
+```
 
-If you need to insert more complex strings or elements, you can pass html purpose:
- ```html
- <span v-tooltip:bottom="'<a href='https://google.com'><button>Link Button</button></a>'">Hover me</span>
- ```
-> **! Note:** Tooltip will change the parent element's **CSS** in  `position: relative`
+If you need to insert more complex strings or elements, you can pass html purpose with custom style:
+```html
+<span v-tooltip:bottom="'<a href='https://google.com'><button style='font-size: 20px;'>Link Button</button></a>'">Hover me</span>
+```
+
 ### Example Usage
 ```html
 <template>
