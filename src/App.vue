@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>
-      <a v-if="green === true" style="display: inline-block; width: 300px; height: 100px; background-color: green;" ><button v-tooltip:bottom="'Verde asd asdasfdasdafdsfdfasdasdad asdasdadsd asdasdasda'">GREEN</button></a>
+      <a v-if="green === true" style="display: inline-block; width: 300px; height: 100px; background-color: green;" ><button v-tooltip="'Verde asd asdasfdasdafdsfdfasdasdad asdasdadsd asdasdasda'">GREEN</button></a>
       <a v-else style="display: inline-block; width: 300px; height: 100px; background-color: yellow;" ><button v-tooltip="text">YELLOW</button></a>
       <a v-if="red === true" v-tooltip:bottom="'<span class=\'pippo\'>Rosso</span>'" style="display: inline-block; width: 300px; height: 100px; background-color: red;" ><button v-tooltip:left="'<span class=\'pippo\'>Rosso</span>'">RED</button></a><br>
       <button @click="green = !green">Green</button><br>

@@ -161,7 +161,7 @@ function createTooltip(el, binding) {
   tooltipBox.style.color = '#fff'
   tooltipBox.style.padding = '5px 20px 5px 20px'
   tooltipBox.style.borderRadius = '6px'
-  tooltipBox.style.visibility = 'hidden'
+  tooltipBox.style.display = 'none'
   tooltipBox.style.fontSize = '12px'
   tooltipBox.style.maxWidth = '320px'
 
@@ -170,7 +170,7 @@ function createTooltip(el, binding) {
   tooltipArrow.style.zIndex = '90'
   tooltipArrow.style.borderWidth = '5px'
   tooltipArrow.style.borderStyle = 'solid'
-  tooltipArrow.style.visibility = 'hidden'
+  tooltipArrow.style.display = 'none'
 
   tooltipBox.appendChild(tooltipText)
   tooltipBox.classList.add('directive-tooltip-selector')
@@ -182,6 +182,8 @@ function createTooltip(el, binding) {
   el.onmouseover = function () {
     let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    tooltipBox.style.display = 'flex'
+    tooltipArrow.style.display = 'flex'
     switch (binding.arg) {
       case 'bottom':
         tooltipBox.style.left = el.getBoundingClientRect().left - tooltipBox.getBoundingClientRect().width / 2 + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
@@ -216,28 +218,26 @@ function createTooltip(el, binding) {
         tooltipArrow.style.marginLeft = '-5px'
         break
     }
-    tooltipBox.style.visibility = 'visible'
-    tooltipArrow.style.visibility = 'visible'
   }
   el.onmouseleave = function () {
-    tooltipBox.style.visibility = 'hidden'
-    tooltipArrow.style.visibility = 'hidden'
+    tooltipBox.style.display = 'none'
+    tooltipArrow.style.display = 'none'
   }
   tooltipArrow.onmouseover = function () {
-    tooltipBox.style.visibility = 'visible'
-    tooltipArrow.style.visibility = 'visible'
+    tooltipBox.style.display = 'flex'
+    tooltipArrow.style.display = 'flex'
   }
   tooltipArrow.onmouseleave = function () {
-    tooltipBox.style.visibility = 'hidden'
-    tooltipArrow.style.visibility = 'hidden'
+    tooltipBox.style.display = 'none'
+    tooltipArrow.style.display = 'none'
   }
   tooltipBox.onmouseover = function () {
-    tooltipBox.style.visibility = 'visible'
-    tooltipArrow.style.visibility = 'visible'
+    tooltipBox.style.display = 'flex'
+    tooltipArrow.style.display = 'flex'
   }
   tooltipBox.onmouseleave = function () {
-    tooltipBox.style.visibility = 'hidden'
-    tooltipArrow.style.visibility = 'hidden'
+    tooltipBox.style.display = 'none'
+    tooltipArrow.style.display = 'none'
   }
 }
 
