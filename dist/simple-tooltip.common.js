@@ -218,6 +218,10 @@ function createTooltip(el, binding) {
     tooltipBox.style.visibility = 'visible'
     tooltipArrow.style.visibility = 'visible'
   }
+  tooltipArrow.onmouseleave = function () {
+    tooltipBox.style.visibility = 'hidden'
+    tooltipArrow.style.visibility = 'hidden'
+  }
   tooltipBox.onmouseover = function () {
     tooltipBox.style.visibility = 'visible'
     tooltipArrow.style.visibility = 'visible'
