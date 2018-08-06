@@ -128,17 +128,28 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
   bind: function (el, binding) {
     createTooltip(el, binding)
   },
-  update: function (el, binding) {
-    let oldTooltipElements = document.getElementsByClassName('directive-tooltip-selector')
-    if (oldTooltipElements[0].parentElement == el) {
-      el.removeChild(oldTooltipElements[0])
+  unbind: function (el, binding) {
+    let oldTooltipElements = document.getElementsByClassName(el.tooltip)
+    for (let i = 0; oldTooltipElements[0]; i++) {
+      oldTooltipElements[0].parentNode.removeChild(oldTooltipElements[0])
     }
-    if (oldTooltipElements[1].parentElement == el) {
-      el.removeChild(oldTooltipElements[1])
+  },
+  componentUpdated: function (el, binding) {
+    let oldTooltipElements = document.getElementsByClassName(el.tooltip)
+    for (let i = 0; oldTooltipElements[0]; i++) {
+      oldTooltipElements[0].parentNode.removeChild(oldTooltipElements[0])
     }
     createTooltip(el, binding)
   }
 }));
+function makeId() {
+  let text = ''
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (let i = 0; i < 5; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return text
+}
 function createTooltip(el, binding) {
   let tooltipBox = document.createElement('div')
   let tooltipArrow = document.createElement('div')
@@ -164,8 +175,10 @@ function createTooltip(el, binding) {
   tooltipArrow.style.display = 'none'
 
   tooltipBox.appendChild(tooltipText)
-  tooltipBox.classList.add('directive-tooltip-selector')
-  tooltipArrow.classList.add('directive-tooltip-selector')
+  let idClass = makeId()
+  tooltipBox.classList.add(idClass)
+  tooltipArrow.classList.add(idClass)
+  el.tooltip = idClass
 
   let body = document.getElementsByTagName('body')[0]
   body.appendChild(tooltipBox)
