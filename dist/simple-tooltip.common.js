@@ -142,23 +142,23 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
     createTooltip(el, binding)
   }
 }));
-function makeId() {
-  let text = ''
-  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  for (let i = 0; i < 5; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-  }
-  return text
-}
 function createTooltip(el, binding) {
   let tooltipBox = document.createElement('div')
   let tooltipArrow = document.createElement('div')
   let tooltipText = document.createElement('span')
 
   tooltipText.innerHTML = binding.value
+  let zIndex = findParentZIndex(el)
+  if (!zIndex || zIndex === 'auto' || zIndex === '') {
+    zIndex = '10'
+  }
+  console.log(zIndex)
+  zIndex = parseInt(zIndex)
+  zIndex += 10
+  zIndex = zIndex.toString()
 
   tooltipBox.style.position = 'absolute'
-  tooltipBox.style.zIndex = '90'
+  tooltipBox.style.zIndex = zIndex
   tooltipBox.style.backgroundColor = 'black'
   tooltipBox.style.color = '#fff'
   tooltipBox.style.padding = '5px 20px 5px 20px'
@@ -169,7 +169,7 @@ function createTooltip(el, binding) {
 
   tooltipArrow.style.content = ''
   tooltipArrow.style.position = 'absolute'
-  tooltipArrow.style.zIndex = '90'
+  tooltipArrow.style.zIndex = zIndex
   tooltipArrow.style.borderWidth = '5px'
   tooltipArrow.style.borderStyle = 'solid'
   tooltipArrow.style.display = 'none'
@@ -243,6 +243,24 @@ function createTooltip(el, binding) {
     tooltipBox.style.display = 'none'
     tooltipArrow.style.display = 'none'
   }
+}
+function findParentZIndex(el) {
+  let zIndex
+  if (el && el.tagName !== 'BODY') {
+    zIndex = document.defaultView.getComputedStyle(el).getPropertyValue('z-index')
+    if (zIndex === 'auto' || zIndex === '') {
+      zIndex = findParentZIndex(el.parentElement)
+    }
+  }
+  return zIndex
+}
+function makeId() {
+  let text = ''
+  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (let i = 0; i < 5; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return text
 }
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
