@@ -186,8 +186,8 @@ function createTooltip(el, binding) {
   el.onmouseover = function () {
     let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop
-    tooltipBox.style.display = 'flex'
-    tooltipArrow.style.display = 'flex'
+    tooltipBox.style.display = 'inline-block'
+    tooltipArrow.style.display = 'inline-block'
     switch (binding.arg) {
       case 'bottom':
         tooltipBox.style.left = el.getBoundingClientRect().left - tooltipBox.getBoundingClientRect().width / 2 + el.getBoundingClientRect().width / 2 + scrollLeft + 'px'
@@ -228,16 +228,16 @@ function createTooltip(el, binding) {
     tooltipArrow.style.display = 'none'
   }
   tooltipArrow.onmouseover = function () {
-    tooltipBox.style.display = 'flex'
-    tooltipArrow.style.display = 'flex'
+    tooltipBox.style.display = 'inline-block'
+    tooltipArrow.style.display = 'inline-block'
   }
   tooltipArrow.onmouseleave = function () {
     tooltipBox.style.display = 'none'
     tooltipArrow.style.display = 'none'
   }
   tooltipBox.onmouseover = function () {
-    tooltipBox.style.display = 'flex'
-    tooltipArrow.style.display = 'flex'
+    tooltipBox.style.display = 'inline-block'
+    tooltipArrow.style.display = 'inline-block'
   }
   tooltipBox.onmouseleave = function () {
     tooltipBox.style.display = 'none'
