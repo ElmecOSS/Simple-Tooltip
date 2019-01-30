@@ -1,7 +1,7 @@
 {
   "name": "vue-simple-tooltip",
   "description": "Simplified tooltip popover",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "Samuele Caprioli <samuele.caprioli@elmec.it>",
   "license": "GNU GPL v3.0",
   "private": false,
