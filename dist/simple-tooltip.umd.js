@@ -139,7 +139,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
       createTooltip(el, binding)
     }
   },
-  inserted(el, binding) {
+  inserted(el) {
     // Update z-Index
     if (el.tooltip) {
       let zIndex = findParentZIndex(el)
@@ -155,8 +155,8 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
       }
     }
   },
-  unbind: function (el, binding) {
-    if (el.tooltip) {
+  unbind: function (el) {
+    if (el.hasOwnProperty('tooltip') && el.tooltip) {
       let oldTooltipElements = document.getElementsByClassName(el.tooltip)
       for (let i = 0; oldTooltipElements.length; i++) {
         if (oldTooltipElements[i]) {
@@ -167,17 +167,18 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
     }
   },
   componentUpdated: function (el, binding) {
-    if (el.tooltip) {
+    if (el.hasOwnProperty('tooltip') && el.tooltip) {
       let oldTooltipElements = document.getElementsByClassName(el.tooltip)
-      for (let i = 0; oldTooltipElements.length; i++) {
+      for (let i = 0; i < oldTooltipElements.length; i++) {
         if (oldTooltipElements[i]) {
-          oldTooltipElements[i].parentNode.removeChild(oldTooltipElements[i])
-          i--
+          if (oldTooltipElements[i].type === 'box') {
+            let tooltipText = oldTooltipElements[i].getElementsByClassName('tooltip-text')
+            if (tooltipText.length) {
+              tooltipText[0].innerHTML = binding.value
+            }
+          }
         }
       }
-    }
-    if (binding.value && binding.value !== '') {
-      createTooltip(el, binding)
     }
   }
 }));
@@ -186,6 +187,7 @@ function createTooltip(el, binding) {
   let tooltipArrow = document.createElement('div')
   let tooltipText = document.createElement('span')
 
+  tooltipText.classList.add('tooltip-text')
   tooltipText.innerHTML = binding.value
   let zIndex = findParentZIndex(el)
   if (!zIndex || zIndex === 'auto' || zIndex === '') {
@@ -195,6 +197,7 @@ function createTooltip(el, binding) {
   zIndex += 10
   zIndex = zIndex.toString()
 
+  tooltipBox.type = 'box'
   tooltipBox.style.wordBreak = 'break-word'
   tooltipBox.style.position = 'absolute'
   tooltipBox.style.zIndex = zIndex
@@ -206,6 +209,7 @@ function createTooltip(el, binding) {
   tooltipBox.style.fontSize = '12px'
   tooltipBox.style.maxWidth = '320px'
 
+  tooltipArrow.type = 'arrow'
   tooltipArrow.style.content = ''
   tooltipArrow.style.position = 'absolute'
   tooltipArrow.style.zIndex = zIndex
