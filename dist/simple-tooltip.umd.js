@@ -135,20 +135,50 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 
 /* harmony default export */ var src = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.directive('tooltip', {
   bind: function (el, binding) {
-    createTooltip(el, binding)
+    if (binding.value && binding.value !== '') {
+      createTooltip(el, binding)
+    }
+  },
+  inserted(el, binding) {
+    // Update z-Index
+    if (el.tooltip) {
+      let zIndex = findParentZIndex(el)
+      if (!zIndex || zIndex === 'auto' || zIndex === '') {
+        zIndex = '10'
+      }
+      zIndex = parseInt(zIndex)
+      zIndex += 10
+      zIndex = zIndex.toString()
+      let oldTooltipElements = document.getElementsByClassName(el.tooltip)
+      for (let i = 0; i < oldTooltipElements.length; i++) {
+        oldTooltipElements[i].style.zIndex = zIndex
+      }
+    }
   },
   unbind: function (el, binding) {
-    let oldTooltipElements = document.getElementsByClassName(el.tooltip)
-    for (let i = 0; oldTooltipElements[0]; i++) {
-      oldTooltipElements[0].parentNode.removeChild(oldTooltipElements[0])
+    if (el.tooltip) {
+      let oldTooltipElements = document.getElementsByClassName(el.tooltip)
+      for (let i = 0; oldTooltipElements.length; i++) {
+        if (oldTooltipElements[i]) {
+          oldTooltipElements[i].parentNode.removeChild(oldTooltipElements[i])
+          i--
+        }
+      }
     }
   },
   componentUpdated: function (el, binding) {
-    let oldTooltipElements = document.getElementsByClassName(el.tooltip)
-    for (let i = 0; oldTooltipElements[0]; i++) {
-      oldTooltipElements[0].parentNode.removeChild(oldTooltipElements[0])
+    if (el.tooltip) {
+      let oldTooltipElements = document.getElementsByClassName(el.tooltip)
+      for (let i = 0; oldTooltipElements.length; i++) {
+        if (oldTooltipElements[i]) {
+          oldTooltipElements[i].parentNode.removeChild(oldTooltipElements[i])
+          i--
+        }
+      }
     }
-    createTooltip(el, binding)
+    if (binding.value && binding.value !== '') {
+      createTooltip(el, binding)
+    }
   }
 }));
 function createTooltip(el, binding) {
@@ -161,11 +191,11 @@ function createTooltip(el, binding) {
   if (!zIndex || zIndex === 'auto' || zIndex === '') {
     zIndex = '10'
   }
-  console.log(zIndex)
   zIndex = parseInt(zIndex)
   zIndex += 10
   zIndex = zIndex.toString()
 
+  tooltipBox.style.wordBreak = 'break-word'
   tooltipBox.style.position = 'absolute'
   tooltipBox.style.zIndex = zIndex
   tooltipBox.style.backgroundColor = 'black'
